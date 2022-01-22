@@ -51,15 +51,20 @@ session_start();
                             echo '<table id="myTable" class="table"> <thead>
                                         <th>Sno</th>
                                         <th>Date</th>
-                                        <th>Attendance</th>
+                                        <th>Attendance Status</th>
                                         </thead>';
                             $sno = 0;
                             while ($rows = $result->fetch_assoc()) {
                                 $sno++;
                                 echo '<tr>
                                                 <td>' . $sno . '</td>
-                                                <td>' . $rows['aDate'] . '</td>
-                                                <td>' . $rows['ap'] . '</td></tr>';
+                                                <td>' . $rows['aDate'] . '</td>';
+
+                                if ($rows['ap'] == "A") {
+                                    echo '<td><span class="badge badge-danger">Apsent</span></td></tr>';
+                                } else {
+                                    echo '<td><span class="badge badge-success">Present</span></td></tr>';
+                                }
                             }
                             echo '</table>';
                         } else {

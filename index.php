@@ -52,7 +52,6 @@ if (isset($_SESSION['sloggedin']) && $_SESSION['sloggedin'] == true) {
 
 <body>
     <div>
-<h1>hi</h1>
         <div class="row">
             <div class="col-md-2" style="background-color: #3f5485; width:100vw; height:100vh">
                 <?php include 'sidebar.php'; ?>

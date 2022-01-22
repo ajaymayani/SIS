@@ -38,6 +38,7 @@
                     <div class="card-body">
                         <table id="myTable" class="table table-striped">
                             <thead>
+                                <th>Sno</th>
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>Gender</th>
@@ -63,6 +64,7 @@
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
+                                    $sno=0;
                                     while ($rows = $result->fetch_assoc()) {
 
                                         if($rows['course']=="1")
@@ -73,6 +75,7 @@
                                         }
 
                                         echo '<tr>
+                                        <td>'.++$sno.'</td>
                     <td>' . $rows['studentId'] . ' </td>
                     <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>
                     <td>' . $rows['gender'] . '</td>

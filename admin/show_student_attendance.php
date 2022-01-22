@@ -45,6 +45,7 @@
                                 <th>Student Id</th>
                                 <th>Student Name</th>
                                 <th>Date</th>
+                                <th>Attendance Status</th>
                                 <th>Actions</th>
                             </thead>
                             <tbody>
@@ -53,18 +54,28 @@
 
                                 include '../partial/_config.php';
 
-                                $sql = "SELECT a.id,s.studentId,a.aDate,s.studentId,s.firstname,s.middlename,s.lastname FROM attendance a,studentsinfo_tbl s where a.studentId=s.studentId";
+                                $sql = "SELECT a.id,s.studentId,a.aDate,a.ap,s.studentId,s.firstname,s.middlename,s.lastname FROM attendance a,studentsinfo_tbl s where a.studentId=s.studentId";
 
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
+                                    $sno =0;
                                     while ($rows = $result->fetch_assoc()) {
+                                        
                                         echo '<tr>
-                                        <td>' . $rows['id'] . ' </td>
+                                        <td>' . ++$sno. ' </td>
                                         <td>' . $rows['studentId'] . ' </td>
                                         <td>' . $rows['firstname'] . ' ' .$rows['middlename'] . ' '. $rows['lastname'] . ' </td>
-                                        <td>' .$rows['aDate'].' </td>
-                    <td> <a href="edit_attendance.php?id=' . $rows['id'] . '&studentId='.$rows['studentId'].'" class="btn edit btn-primary btn-sm">Edit</a> <button  id="' . $rows['id'] . '" class="delete btn btn-danger btn-sm">Delete</button></td>
+                                        <td>' .$rows['aDate'].' </td>';
+
+                                        if($rows['ap']=="A")
+                                        {
+                                            echo '<td><span class="badge badge-danger">Apsent</span></td>';
+                                        }else{
+                                            echo '<td><span class="badge badge-success">Present</span></td>';
+                                        }
+
+                    echo '<td> <a href="edit_attendance.php?id=' . $rows['id'] . '&studentId='.$rows['studentId'].'" class="btn edit btn-primary btn-sm">Edit</a> <button  id="' . $rows['id'] . '" class="delete btn btn-danger btn-sm">Delete</button></td>
 
                     </tr>';
                                     }

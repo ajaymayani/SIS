@@ -7,17 +7,25 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username = '$username' and password = '$password'";
+    $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-        session_start();
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
 
-        header("location:index.php");
+        while ($row = $result->fetch_assoc()) {
+
+            if (password_verify($password, $row['password'])) {
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username;
+
+                header("location:index.php");
+            } else {
+                $showError = "Incorrect password";
+            }
+        }
     } else {
-        $showError = "Invalid credential";
+        $showError = "Invalid username";
     }
 }
 ?>
@@ -32,68 +40,62 @@ if (isset($_POST['login'])) {
     <title>Login</title>
     <link rel="stylesheet" href="../bootstrap/css/style.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
-        #login-right {
-            position: absolute;
-            right: 0;
-            width: 40%;
-            height: calc(100%);
-            background: white;
+        section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
             display: flex;
+            justify-content: center;
             align-items: center;
         }
 
-        #login-left {
-            position: absolute;
-            left: 0;
-            width: 60%;
-            height: calc(100%);
-            background: #00000061;
+
+        section .content-box {
             display: flex;
+            justify-content: center;
             align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 35%;
+            height: 60%;
         }
 
-        #login-right .card {
-            margin: auto
+        section .content-box .form-box {
+            width: 70%;
         }
 
-        .logo {
-            margin: auto;
-            font-size: 8rem;
-            background: white;
-            padding: .5em 0.8em;
-            border-radius: 50% 50%;
-            color: #000000b3;
-        }
-
-        #login-left {
-            background: url('../images/h.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
+        .alert {
+            width: 100%;
+            padding: 10px 20px;
+            outline: none;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin: 0px;
         }
     </style>
 </head>
 
 <body>
 
-    <?php
-    if ($showError) {
-        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <!-- <?php
+            if ($showError) {
+                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Error !</strong> ' . $showError . '
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>';
-    }
-    ?>
-
-    <main id="main" class=" alert-info">
+            }
+            ?>-->
+    <!-- 
+    <div id="main" class=" alert-info">
         <div id="login-left">
-            <!-- == You can logo or image herre == -->
-            <!-- <div class="logo">
-  				<i class="fa fa-poll-h"></i>
-  			</div> -->
-        </div>
+            
+                </div>
         <div id="login-right">
             <div class="card col-md-8">
                 <div class="card-body">
@@ -111,9 +113,43 @@ if (isset($_POST['login'])) {
                 </div>
             </div>
         </div>
+    </div> -->
 
 
-    </main>
+    <section>
+        <div class="content-box">
+            <div class="form-box">
+                <h2>Login</h2>
+                <form action="login.php" method="post">
+                    <div class="input-box">
+                        <input type="text" id="username" name="username" placeholder="Usename" required>
+
+                    </div>
+                    <div class="input-box">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" name="login" id="login" value="Login">
+                    </div>
+                    <div class="input-box">
+                        <?php
+                        if ($showError) {
+                            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error !</strong> ' . $showError . '
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+                        }
+                        ?>
+                    </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </section>
+
     <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
     <script src="../bootstrap/js/popper.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>

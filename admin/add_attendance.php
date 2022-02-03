@@ -33,6 +33,8 @@ if (isset($_POST['addAttendance']) && $_SERVER['REQUEST_METHOD'] == "POST") {
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
         .radio-toolbar {
             margin: 10px;
@@ -97,7 +99,7 @@ if (isset($_POST['addAttendance']) && $_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="card mt-2">
                     <div class="card-header">
-                        <strong>Attendance</strong>
+                        <h5 class="my-0">Attendance</h5>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">

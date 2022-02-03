@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
 
                 <div class="card mt-2">
                     <div class="card-header">
-                        <strong>All Students</strong>
+                        <h5 class="my-0">All Students</h5>
                     </div>
                     <div class="card-body">
                         <table id="myTable" class="table table-striped">
@@ -81,7 +83,7 @@
                     <td>' . $rows['gender'] . '</td>
                     <td>' . $rows['emailId'] . '</td>
                     <td>' .$stud_course. '</td>
-                    <td> <a href="edit.php?id=' . $rows['studentId'] . '" class="btn btn-primary btn-sm">Edit</a> <button  id="' . $rows['studentId'] . '" class="delete btn btn-danger btn-sm">Delete</button></td>
+                    <td> <a href="edit.php?id=' . $rows['studentId'] . '" class="btn btn-success btn-sm">Edit</a> <button  id="' . $rows['studentId'] . '" class="delete btn btn-danger btn-sm">Delete</button></td>
 
                     </tr>';
                                     }

@@ -29,6 +29,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <link rel="stylesheet" href="../bootstrap/css/style.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <script src="../fontawesome-free-5.6.3-web/icon.js" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
         ul li a {
             color: white;
@@ -56,6 +60,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         .border-left-warning {
             border-left: 0.25rem solid #f6c23e !important;
         }
+
+
+        h6 {
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
     </style>
 
 </head>
@@ -74,7 +87,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         
             <div class=" card mt-3">
                 <div class="card-header">
-                    <strong> Add Students</strong>
+                    <h5 class="my-0"> Add Students</h5>
                 </div>
                 <div class="card-body">
                     <!-- Content Row -->
@@ -87,13 +100,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                BCA Stundets</div>
+                                                <h6>BCA Stundets</h6>
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $bca_student; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-users fa-2x mr-1"></i>
                                         </div>
-                                    <a href="show_all_students.php?course=1" class="small-box-footer mt-2">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="show_all_students.php?course=1" class="small-box-footer mt-2">More info <i class="fa fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -106,14 +120,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Msc-IT Students</div>
+                                                <h6>Msc-IT Students</h6>
+                                            </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $msc_student; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-users fa-2x mr-1"></i>
                                         </div>
                                         <div class="col-auto mt-2">
-                                    <a href="show_all_students.php?course=2" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                            <a href="show_all_students.php?course=2" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="bootstrap/css/style.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/d89d19708a.js" crossorigin="anonymous"></script>
+
     <style>
         ul li a {
             color: white;
@@ -39,13 +40,13 @@
             <a class="nav-link" href="index.php"><i class="fa fa-dashboard mr-2"></i>Dashboard</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="student_profile.php"><i class="fas fa-user-graduate mr-2"></i>Student Profile</a>
+            <a class="nav-link" href="student_profile.php"><i class="fas fa-user-graduate mr-2"></i>Profile</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="student_result.php"><i class="fas fa-poll mr-2"></i>Student Result</a>
+            <a class="nav-link" href="student_result.php"><i class="fas fa-poll mr-2"></i>Result</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="student_attendance.php"> <i class="fas fa-calendar-alt mr-2"></i>Student Attendance</a>
+            <a class="nav-link" href="student_attendance.php"> <i class="fas fa-calendar-alt mr-2"></i>Attendance</a>
         </li>
 
     </ul>

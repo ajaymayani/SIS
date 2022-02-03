@@ -15,6 +15,10 @@ session_start();
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 
 <body>
@@ -35,7 +39,7 @@ session_start();
 
                 <div class="card mt-2">
                     <div class="card-header">
-                        <strong>Show Result</strong>
+                        <h5>Show Result</h5>
                     </div>
                     <div class="card-body">
                         <?php
@@ -357,7 +361,7 @@ session_start();
         </div>
     </div>
 
-    <?php include '../partial/_footer.php'; ?>
+    <?php include 'partial/_footer.php'; ?>
 
     <script src="bootstrap/js/jquery-3.2.1.slim.min.js"></script>
     <script src="bootstrap/js/popper.min.js"></script>

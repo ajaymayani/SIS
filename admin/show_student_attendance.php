@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -36,7 +38,7 @@
 
                 <div class="card mt-2">
                     <div class="card-header">
-                        <strong>All Students</strong>
+                        <h5 class="my-0">Show Attendance</h5>
                     </div>
                     <div class="card-body">
                         <table id="myTable" class="table table-striped">
@@ -75,7 +77,7 @@
                                             echo '<td><span class="badge badge-success">Present</span></td>';
                                         }
 
-                    echo '<td> <a href="edit_attendance.php?id=' . $rows['id'] . '&studentId='.$rows['studentId'].'" class="btn edit btn-primary btn-sm">Edit</a> <button  id="' . $rows['id'] . '" class="delete btn btn-danger btn-sm">Delete</button></td>
+                    echo '<td> <a href="edit_attendance.php?id=' . $rows['id'] . '&studentId='.$rows['studentId'].'" class="btn edit btn-success btn-sm">Edit</a> <button  id="' . $rows['id'] . '" class="delete btn btn-danger btn-sm">Delete</button></td>
 
                     </tr>';
                                     }

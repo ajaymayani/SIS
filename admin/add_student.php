@@ -44,6 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <title>Document</title>
     <link rel="stylesheet" href="../bootstrap/css/style.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 
 <body>
@@ -73,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="card mt-3">
                     <div class="card-header">
-                        <strong> Add Student</strong>
+                        <h5> Add Student</h5>
                     </div>
                     <div class="card-body">
                     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">

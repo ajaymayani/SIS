@@ -19,6 +19,9 @@ if (isset($_SESSION['sloggedin']) && $_SESSION['sloggedin'] == true) {
     <link rel="stylesheet" href="bootstrap/css/style.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="fontawesome-free-5.6.3-web/icon.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
     <style>
         ul li a {
             color: white;
@@ -46,6 +49,7 @@ if (isset($_SESSION['sloggedin']) && $_SESSION['sloggedin'] == true) {
         .border-left-warning {
             border-left: 0.25rem solid #f6c23e !important;
         }
+
     </style>
 
 </head>
@@ -63,27 +67,25 @@ if (isset($_SESSION['sloggedin']) && $_SESSION['sloggedin'] == true) {
         
             <div class=" card mt-3">
                 <div class="card-header">
-                    <strong> Dashboard</strong>
+                    <h5>Dashboard</h2>
                 </div>
                 <div class="card-body">
                     <!-- Content Row -->
                     <div class="row mr-2">
-                        
-                        <?php 
-                            $sql = "select course from studentsinfo_tbl where studentId = ".$_SESSION['studentId'];
-                            $result = $conn->query($sql);
-                            while($row = $result->fetch_assoc())
-                            {
-                                $course = $row['course'];
 
-                                if($course=="1")
-                                {
-                                    echo '<h6 class="ml-3">Programme Name : Bachelor of Computer Application</h6>';
-                                }else{
-                                    echo '<h6 class="ml-3">Programme Name : Master of Science</h6>';
-                                }
+                        <?php
+                        $sql = "select course from studentsinfo_tbl where studentId = " . $_SESSION['studentId'];
+                        $result = $conn->query($sql);
+                        while ($row = $result->fetch_assoc()) {
+                            $course = $row['course'];
+
+                            if ($course == "1") {
+                                echo '<h6 class="ml-3">Programme Name : Bachelor of Computer Application</h6>';
+                            } else {
+                                echo '<h6 class="ml-3">Programme Name : Master of Science</h6>';
                             }
-                        ?>    
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

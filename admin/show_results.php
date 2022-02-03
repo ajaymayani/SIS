@@ -15,6 +15,9 @@ session_start();
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -35,7 +38,7 @@ session_start();
 
                 <div class="card mt-2">
                     <div class="card-header">
-                        <strong>Show Result</strong>
+                        <h5 class="my-0">Show Result</h5>
                     </div>
                     <div class="card-body">
 

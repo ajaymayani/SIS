@@ -38,6 +38,9 @@ if($result)
     <link rel="stylesheet" href="bootstrap/css/style.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="css/style.css">
+
+
     <title>Student Profile</title>
 </head>
 
@@ -58,7 +61,7 @@ if($result)
                 </div>
                 <div class="card mt-3">
                     <div class="card-header">
-                        <strong>Student Profile</strong>
+                        <h5>Student Profile</h5>
                     </div>
                     <div class="card-body">
                         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">

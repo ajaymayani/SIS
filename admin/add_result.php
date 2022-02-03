@@ -195,6 +195,7 @@ if (isset($_POST['addResult']) && $_SERVER['REQUEST_METHOD'] == "POST") {
     <title>Document</title>
     <link rel="stylesheet" href="../bootstrap/css/style.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -225,7 +226,7 @@ if (isset($_POST['addResult']) && $_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="card mt-3">
                     <div class="card-header">
-                        <strong> Add Result </strong>
+                        <h5 class="my-0"> Add Result </h5>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>">

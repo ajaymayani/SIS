@@ -12,20 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($result) {
 
     if ($result->num_rows > 0) {
-      
-      while($row = $result->fetch_assoc())
-      {
+
+      while ($row = $result->fetch_assoc()) {
         session_start();
         $_SESSION['sloggedin'] = true;
-        $_SESSION['studentId'] =$row['studentId']; 
+        $_SESSION['studentId'] = $row['studentId'];
         $_SESSION['susername'] = $row['firstname'];
-        $_SESSION['course'] =$row['course']; 
+        $_SESSION['course'] = $row['course'];
         $_SESSION['semester'] = $row['semester'];
-        $_SESSION['name'] = $row['firstname'].' '.$row['middlename'].' '.$row['lastname'];
-        
+        $_SESSION['name'] = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
+
         header("location:index.php");
       }
-
     } else {
       $showError = "Invalid credential";
       echo "" . $conn->error;
@@ -49,42 +47,52 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <script src="fontawesome-free-5.6.3-web/icon.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-  <!-- partial:index.partial.html -->
-  <div id="login-form-wrap">
-    <div>
-      <?php
-      if ($showError) {
-        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error !</strong> ' . $showError . '
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>';
-      }
-      ?>
+  <section>
+    <div class="img-box">
+      <img src="images/MSUB_Logo.png" alt="">
+      <div>
+        <h2>MSUIS</br>
+          Student Application</h2>
+      </div>
     </div>
-    <h2>Login</h2>
-    <form id="login-form" method="POST" action="login.php">
-      <p>
-        <input type="text" id="studentId" name="studentId" placeholder="Student Id" required>
-      </p>
-      <p>
-        <input type="password" id="password" name="password" placeholder="Password" required>
-      </p>
-      <p>
-        <input type="submit" name="login" id="login" value="Login">
-      </p>
-    </form>
-    <div id="create-account-wrap">
-      <p>Forget Password ? <a href="forget_password.php">click</a>
-      <p>
+    <div class="content-box">
+      <div class="form-box">
+        <h2>Login</h2>
+        <?php
+        if ($showError) {
+          echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error !</strong> ' . $showError . '
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>';
+        }
+        ?>
+        <form action="login.php" method="post">
+          <div class="input-box">
+            <span>Student Id</span>
+            <input type="text" name="studentId" id="studentId" required>
+          </div>
+          <div class="input-box">
+            <span>Password</span>
+            <input type="password" name="password" id="password" required>
+          </div>
+          <div class="remember">
+            <label for=""><input type="checkbox" name="" id="">Remember me </label>
+          </div>
+          <div class="input-box">
+            <input type="submit" id="submit" name="submit" value="Login">
+      </div>
+        </form>
+      </div>
     </div>
-  </div>
+  </section>
+
   <script src="bootstrap/js/jquery-3.2.1.slim.min.js"></script>
   <script src="bootstrap/js/popper.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>

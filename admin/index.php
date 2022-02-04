@@ -96,7 +96,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                <h6>BCA Stundets</h6>
+                                                <h6 class="text-primary">BCA Stundets</h6>
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $bca_student; ?></div>
                                         </div>
@@ -116,7 +116,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                <h6>Msc-IT Students</h6>
+                                                <h6 class="text-success">Msc-IT Students</h6>
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $msc_student; ?></div>
                                         </div>

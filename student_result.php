@@ -18,6 +18,14 @@ session_start();
 
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="admin/jq/assets/plugins/datatables/export/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="admin/jq/assets/css/plugins.min.css">
+
+    <style>
+        .red {
+            color :red;
+        }
+    </style>
 
 </head>
 
@@ -68,16 +76,23 @@ session_start();
                                         $sno = 0;
                                         while ($rows = $result->fetch_assoc()) {
                                             $sno++;
-                                            echo '<tr>
-                                                <td>' . $sno . '</td>
-                                                <td>' . $rows['BCA101'] . '</td>
-                                                <td>' . $rows['BCA102'] . '</td>
-                                                <td>' . $rows['BCA103'] . '</td>
-                                                <td>' . $rows['BCA104'] . '</td>
-                                                <td>' . $rows['BCA105'] . '</td>
-                                                <td>' . $rows['BCA106'] . '</td>
-                                                <td>' . $rows['percentage'] . '</td>
-                                                <td>' . $rows['total'] . '</td></tr>';
+
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+
                                         }
                                         echo '</table>';
                                     } else {
@@ -101,16 +116,21 @@ session_start();
                                         </thead>';
                                         $sno = 0;
                                         while ($rows = $result->fetch_assoc()) {
-                                            $sno++;
-                                            echo '<tr><td>' . $sno . '</td>
-                                                <td>' . $rows['BCA201'] . '</td>
-                                                <td>' . $rows['BCA202'] . '</td>
-                                                <td>' . $rows['BCA203'] . '</td>
-                                                <td>' . $rows['BCA204'] . '</td>
-                                                <td>' . $rows['BCA205'] . '</td>
-                                                <td>' . $rows['BCA206'] . '</td>
-                                                <td>' . $rows['percentage'] . '</td>
-                                                <td>' . $rows['total'] . '</td></tr>';
+                                            $sno++;echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                         }
                                         echo '</table>';
                                     } else {
@@ -133,14 +153,21 @@ session_start();
                                     </thead>';
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                            <td>' . $rows['BCA301'] . '</td>
-                                            <td>' . $rows['BCA302'] . '</td>
-                                            <td>' . $rows['BCA303'] . '</td>
-                                            <td>' . $rows['BCA304'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                        $sno++;echo '<tr>';
+                                        $i = 0;
+                                        echo '<td>' . $sno . '</td>';
+
+                                        foreach ($rows as $key => $value) {
+
+                                            if ($i > 0 && $i < 7) {
+                                                if ($value < 25)
+                                                    echo '<td class="red">' . $value . '</td>';
+                                                else
+                                                    echo '<td>' . $value . '</td>';
+                                            }
+                                            $i++;
+                                        }
+                                        echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -163,13 +190,21 @@ session_start();
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
                                         $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                            <td>' . $rows['BCA401'] . '</td>
-                                            <td>' . $rows['BCA402'] . '</td>
-                                            <td>' . $rows['BCA403'] . '</td>
-                                            <td>' . $rows['BCA404'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                        echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 7) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -191,12 +226,20 @@ session_start();
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
                                         $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                            <td>' . $rows['BCA501'] . '</td>
-                                            <td>' . $rows['BCA502'] . '</td>
-                                            <td>' . $rows['BCA503'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 6) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -216,10 +259,21 @@ session_start();
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
                                         $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>' . $rows['BCA601'] . '</td>
-                                        <td>' . $rows['percentage'] . '</td>
-                                        <td>' . $rows['total'] . '</td></tr>';
+                                        echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 4) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -246,15 +300,21 @@ session_start();
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
                                         $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                            <td>' . $rows['MSCIT101'] . '</td>
-                                            <td>' . $rows['MSCIT102'] . '</td>
-                                            <td>' . $rows['MSCIT103'] . '</td>
-                                            <td>' . $rows['MSCIT104'] . '</td>
-                                            <td>' . $rows['MSCIT105'] . '</td>
-                                            <td>' . $rows['MSCIT106'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                        echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -278,14 +338,21 @@ session_start();
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
                                         $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                            <td>' . $rows['MSCIT201'] . '</td>
-                                            <td>' . $rows['MSCIT202'] . '</td>
-                                            <td>' . $rows['MSCIT203'] . '</td>
-                                            <td>' . $rows['MSCIT204'] . '</td>
-                                            <td>' . $rows['MSCIT205'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                        echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 8) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -310,15 +377,21 @@ session_start();
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
                                         $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                            <td>' . $rows['MSCIT301'] . '</td>
-                                            <td>' . $rows['MSCIT302'] . '</td>
-                                            <td>' . $rows['MSCIT303'] . '</td>
-                                            <td>' . $rows['MSCIT304'] . '</td>
-                                            <td>' . $rows['MSCIT305'] . '</td>
-                                            <td>' . $rows['MSCIT306'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                        echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -338,10 +411,21 @@ session_start();
                                     $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
                                         $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                            <td>' . $rows['MSCIT401'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                        echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>';
+
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 4) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                     }
                                     echo '</table>';
                                 } else {
@@ -367,9 +451,22 @@ session_start();
     <script src="bootstrap/js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script src="admin/jq/assets/plugins/datatables/export/dataTables.buttons.min.js"></script>
+    <script src="admin/jq/assets/plugins/datatables/export/pdfmake.min.js"></script>
+    <script src="admin/jq/assets/plugins/datatables/export/vfs_fonts.js"></script>
+    <script src="admin/jq/assets/plugins/datatables/export/buttons.html5.min.js"></script>
+ 
+
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'pdf'
+                ]
+
+            });
         });
     </script>
 </body>

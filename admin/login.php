@@ -1,5 +1,10 @@
 <?php
 include '../partial/_config.php';
+session_start();
+if (isset($_SESSION['loggedin'])) {
+    header("location:index.php");
+}
+
 $showError = false;
 
 if (isset($_POST['login'])) {

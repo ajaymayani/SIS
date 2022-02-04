@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header("location:login.php");
+}
 include '../partial/_config.php';
 if(isset($_POST['update']) && $_SERVER['REQUEST_METHOD']=="POST")
 {

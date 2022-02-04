@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header("location:login.php");
+}
 $id = $_GET['id'];
 
 include '../partial/_config.php';

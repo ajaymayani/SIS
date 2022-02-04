@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['sloggedin']) || $_SESSION['sloggedin'] != true) {
+    header("location:login.php");
+}
 include 'partial/_config.php';
 $sql = "select * from studentsinfo_tbl where studentId = ".$_SESSION['studentId'];
 $result = $conn->query($sql);

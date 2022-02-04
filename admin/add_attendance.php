@@ -2,7 +2,9 @@
 include '../partial/_config.php';
 $inserted = false;
 session_start();
-
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+    header("location:login.php");
+}
 if (isset($_POST['addAttendance']) && $_SERVER['REQUEST_METHOD'] == "POST") {
     $studentId = $_POST['id'];
     $aDate = $_POST['aDate'];

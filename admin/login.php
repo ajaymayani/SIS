@@ -38,10 +38,7 @@ if (isset($_POST['login'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
+    <?php include 'link.php'; ?>
     <style>
         section {
             position: relative;
@@ -80,42 +77,6 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-
-    <!-- <?php
-            if ($showError) {
-                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Error !</strong> ' . $showError . '
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>';
-            }
-            ?>-->
-    <!-- 
-    <div id="main" class=" alert-info">
-        <div id="login-left">
-            
-                </div>
-        <div id="login-right">
-            <div class="card col-md-8">
-                <div class="card-body">
-                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
-                        <div class="form-group">
-                            <label for="username" class="control-label">Username</label>
-                            <input type="text" id="username" name="username" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="control-label">Password</label>
-                            <input type="password" id="password" name="password" class="form-control">
-                        </div>
-                        <center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary" name="login">Login</button></center>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
     <section>
         <div class="content-box">
             <div class="form-box">
@@ -149,10 +110,6 @@ if (isset($_POST['login'])) {
         </div>
         </div>
     </section>
-
-    <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

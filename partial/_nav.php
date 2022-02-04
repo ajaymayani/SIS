@@ -1,12 +1,4 @@
-<html>
 
-<head>
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-</head>
-
-<body>
 
     <div class=" row text-center" style="background-color: #3f5485; height:56px;">
         <div class="col">
@@ -47,9 +39,5 @@
         </div>
     </div>
 
-    <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-</body>
 
-</html>
+  

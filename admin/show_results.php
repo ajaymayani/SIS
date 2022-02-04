@@ -11,13 +11,15 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
-
+    <?php include 'link.php'; ?>
+    <link href="jq/assets/plugins/datatables/export/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Styles -->
+    <link href="jq/assets/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -108,17 +110,38 @@ session_start();
                                         $sno = 0;
                                         while ($rows = $result->fetch_assoc()) {
                                             $sno++;
-                                            echo '<tr>
-                                                <td>' . $sno . '</td>
-                                                <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                                <td>' . $rows['BCA101'] . '</td>
-                                                <td>' . $rows['BCA102'] . '</td>
-                                                <td>' . $rows['BCA103'] . '</td>
-                                                <td>' . $rows['BCA104'] . '</td>
-                                                <td>' . $rows['BCA105'] . '</td>
-                                                <td>' . $rows['BCA106'] . '</td>
-                                                <td>' . $rows['percentage'] . '</td>
-                                                <td>' . $rows['total'] . '</td></tr>';
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+
+                                            // echo '<tr>
+                                            //     <td>' . $sno . '</td>
+                                            //     <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>';
+                                            //     if($rows['BCA101']<25){
+                                            //         echo  '<td class="red">' . $rows['BCA101'] . '</td>';
+                                            //     }else{
+                                            //         echo  '<td>' . $rows['BCA101'] . '</td>';
+                                            //     }
+                                            //     echo '
+                                            //     <td>' . $rows['BCA102'] . '</td>
+                                            //     <td>' . $rows['BCA103'] . '</td>
+                                            //     <td>' . $rows['BCA104'] . '</td>
+                                            //     <td>' . $rows['BCA105'] . '</td>
+                                            //     <td>' . $rows['BCA106'] . '</td>
+                                            //     <td>' . $rows['percentage'] . '</td>
+                                            //     <td>' . $rows['total'] . '</td></tr>';
                                         }
                                         echo '</table>';
                                     } else {
@@ -144,28 +167,32 @@ session_start();
                                         $sno = 0;
                                         while ($rows = $result->fetch_assoc()) {
                                             $sno++;
-                                            echo '<tr><td>' . $sno . '</td>
-                                            <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                                <td>' . $rows['BCA201'] . '</td>
-                                                <td>' . $rows['BCA202'] . '</td>
-                                                <td>' . $rows['BCA203'] . '</td>
-                                                <td>' . $rows['BCA204'] . '</td>
-                                                <td>' . $rows['BCA205'] . '</td>
-                                                <td>' . $rows['BCA206'] . '</td>
-                                                <td>' . $rows['percentage'] . '</td>
-                                                <td>' . $rows['total'] . '</td></tr>';
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
                                         }
                                         echo '</table>';
                                     } else {
                                         echo "result not available " . $conn->error;
                                     }
-                                }
-                             else if ($semester == "3") {
-                                $sql = "select * from bca_sem3_result_tbl r, studentsinfo_tbl s where r.studentId = s.studentId";
-                                $result = $conn->query($sql);
+                                } else if ($semester == "3") {
+                                    $sql = "select * from bca_sem3_result_tbl r, studentsinfo_tbl s where r.studentId = s.studentId";
+                                    $result = $conn->query($sql);
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>BCA301</th>
@@ -175,28 +202,35 @@ session_start();
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                            <td>' . $rows['BCA301'] . '</td>
-                                            <td>' . $rows['BCA302'] . '</td>
-                                            <td>' . $rows['BCA303'] . '</td>
-                                            <td>' . $rows['BCA304'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
-                                    }
-                                    echo '</table>';
-                                } else {
-                                    echo "result not available " . $conn->error;
-                                }
-                            } else if ($semester == "4") {
-                                $sql = "select * from bca_sem4_result_tbl r , studentsinfo_tbl s where r.studentId =  s.studentId";
-                                $result = $conn->query($sql);
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                                if ($i > 0 && $i < 7) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';   
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
+                                    }
+                                } else if ($semester == "4") {
+                                    $sql = "select * from bca_sem4_result_tbl r , studentsinfo_tbl s where r.studentId =  s.studentId";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>BCA401</th>
@@ -206,28 +240,35 @@ session_start();
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                            <td>' . $rows['BCA401'] . '</td>
-                                            <td>' . $rows['BCA402'] . '</td>
-                                            <td>' . $rows['BCA403'] . '</td>
-                                            <td>' . $rows['BCA404'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
-                                    }
-                                    echo '</table>';
-                                } else {
-                                    echo "result not available " . $conn->error;
-                                }
-                            } else if ($semester == "5") {
-                                $sql = "select * from bca_sem5_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
-                                $result = $conn->query($sql);
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                                if ($i > 0 && $i < 7) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
+                                    }
+                                } else if ($semester == "5") {
+                                    $sql = "select * from bca_sem5_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>BCA501</th>
@@ -236,54 +277,72 @@ session_start();
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                            <td>' . $rows['BCA501'] . '</td>
-                                            <td>' . $rows['BCA502'] . '</td>
-                                            <td>' . $rows['BCA503'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
-                                    }
-                                    echo '</table>';
-                                } else {
-                                    echo "result not available " . $conn->error;
-                                }
-                            } else if ($semester == "6") {
-                                $sql = "select * from bca_sem6_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
-                                $result = $conn->query($sql);
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                                if ($i > 0 && $i < 6) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
+                                    }
+                                } else if ($semester == "6") {
+                                    $sql = "select * from bca_sem6_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>BCA601</th>
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                        <td>' . $rows['BCA601'] . '</td>
-                                        <td>' . $rows['percentage'] . '</td>
-                                        <td>' . $rows['total'] . '</td></tr>';
-                                    }
-                                    echo '</table>';
-                                } else {
-                                    echo "result not available " . $conn->error;
-                                }
-                            }
-                        }else{
-                            if ($semester == "1") {
-                                $sql = "select * from mscit_sem1_result_tbl r,studentsinfo_tbl s where r.studentId= s.studentId";
-                                $result = $conn->query($sql);
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                                if ($i > 0 && $i < 4) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
+                                    }
+                                }
+                            } else {
+                                if ($semester == "1") {
+                                    $sql = "select * from mscit_sem1_result_tbl r,studentsinfo_tbl s where r.studentId= s.studentId";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>MSCIT101</th>
@@ -295,30 +354,35 @@ session_start();
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                            <td>' . $rows['MSCIT101'] . '</td>
-                                            <td>' . $rows['MSCIT102'] . '</td>
-                                            <td>' . $rows['MSCIT103'] . '</td>
-                                            <td>' . $rows['MSCIT104'] . '</td>
-                                            <td>' . $rows['MSCIT105'] . '</td>
-                                            <td>' . $rows['MSCIT106'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
-                                    }
-                                    echo '</table>';
-                                } else {
-                                    echo "result not available " . $conn->error;
-                                }
-                            }else if ($semester == "2") {
-                                $sql = "select * from mscit_sem2_result_tbl r , studentsinfo_tbl s where r.studentId = s.studentId";
-                                $result = $conn->query($sql);
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
+                                    }
+                                } else if ($semester == "2") {
+                                    $sql = "select * from mscit_sem2_result_tbl r , studentsinfo_tbl s where r.studentId = s.studentId";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>MSCIT201</th>
@@ -329,29 +393,35 @@ session_start();
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                            <td>' . $rows['MSCIT201'] . '</td>
-                                            <td>' . $rows['MSCIT202'] . '</td>
-                                            <td>' . $rows['MSCIT203'] . '</td>
-                                            <td>' . $rows['MSCIT204'] . '</td>
-                                            <td>' . $rows['MSCIT205'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
-                                    }
-                                    echo '</table>';
-                                } else {
-                                    echo "result not available " . $conn->error;
-                                }
-                            }else if ($semester == "3") {
-                                $sql = "select * from mscit_sem3_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
-                                $result = $conn->query($sql);
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                                if ($i > 0 && $i < 8) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
+                                    }
+                                } else if ($semester == "3") {
+                                    $sql = "select * from mscit_sem3_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>MSCIT301</th>
@@ -363,54 +433,69 @@ session_start();
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                            <td>' . $rows['MSCIT301'] . '</td>
-                                            <td>' . $rows['MSCIT302'] . '</td>
-                                            <td>' . $rows['MSCIT303'] . '</td>
-                                            <td>' . $rows['MSCIT304'] . '</td>
-                                            <td>' . $rows['MSCIT305'] . '</td>
-                                            <td>' . $rows['MSCIT306'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
-                                    }
-                                    echo '</table>';
-                                } else {
-                                    echo "result not available " . $conn->error;
-                                }
-                            }else if ($semester == "4") {
-                                $sql = "select * from mscit_sem4_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
-                                $result = $conn->query($sql);
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
 
-                                if ($result->num_rows > 0) {
-                                    echo '<table id="myTable" class="table"> <thead>
+                                                if ($i > 0 && $i < 9) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
+                                    }
+                                } else if ($semester == "4") {
+                                    $sql = "select * from mscit_sem4_result_tbl r,studentsinfo_tbl s where r.studentId = s.studentId";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        echo '<table id="myTable" class="table"> <thead>
                                     <th>Sno</th>
                                     <th>Name</th>
                                     <th>MSCIT401</th>
                                     <th>Percentage</th>
                                     <th>Total</th>
                                     </thead>';
-                                    $sno = 0;
-                                    while ($rows = $result->fetch_assoc()) {
-                                        $sno++;
-                                        echo '<tr><td>' . $sno . '</td>
-                                        <td>'.$rows['firstname'].' ' .$rows['middlename'].' ' .$rows['lastname'].'</td>
-                                            <td>' . $rows['MSCIT401'] . '</td>
-                                            <td>' . $rows['percentage'] . '</td>
-                                            <td>' . $rows['total'] . '</td></tr>';
+                                        $sno = 0;
+                                        while ($rows = $result->fetch_assoc()) {
+                                            $sno++;
+                                            echo '<tr>';
+                                            $i = 0;
+                                            echo '<td>' . $sno . '</td>
+                                             <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>';
+                                            foreach ($rows as $key => $value) {
+
+                                                if ($i > 0 && $i < 4) {
+                                                    if ($value < 25)
+                                                        echo '<td class="red">' . $value . '</td>';
+                                                    else
+                                                        echo '<td>' . $value . '</td>';
+                                                }
+                                                $i++;
+                                            }
+                                            echo '</tr>';
+                                        }
+                                        echo '</table>';
+                                    } else {
+                                        echo "result not available " . $conn->error;
                                     }
-                                    echo '</table>';
                                 } else {
-                                    echo "result not available " . $conn->error;
+                                    echo '<script>alert("Please select semester 1 to 4")</script>';
                                 }
-                            }else{
-                                echo '<script>alert("Please select semester 1 to 4")</script>';
                             }
                         }
-                    }
 
                         ?>
                     </div>
@@ -420,15 +505,22 @@ session_start();
         </div>
     </div>
 
-    <?php include '../partial/_footer.php'; ?>
+    <?php include '../partial/_footer.php';
+    include 'script.php';
+    ?>
 
-    <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/dataTables.buttons.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/pdfmake.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/vfs_fonts.js"></script>
+    <script src="jq/assets/plugins/datatables/export/buttons.html5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'pdf'
+                ]
+            });
         });
 
         deletes = document.getElementsByClassName('delete');

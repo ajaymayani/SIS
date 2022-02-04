@@ -26,14 +26,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <html>
 
 <head>
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <script src="../fontawesome-free-5.6.3-web/icon.js" crossorigin="anonymous"></script>
+    <!-- <script src="../fontawesome-free-5.6.3-web/icon.js" crossorigin="anonymous"></script> -->
 
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <style>
+    <?php include 'link.php';?>
+<style>
         ul li a {
             color: white;
             text-align: left;
@@ -146,11 +142,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </div>
 
     </div>
-    <?php include '../partial/_footer.php'; ?>
-
-    <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <?php include '../partial/_footer.php'; 
+        include 'script.php';
+    ?>
 </body>
 
 </html>

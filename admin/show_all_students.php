@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="css/style.css">
+    <?php include 'link.php';?>
 
+    <link href="jq/assets/plugins/datatables/export/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Styles -->
+    <link href="jq/assets/css/plugins.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -56,7 +56,7 @@
 
                                 if ($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['course'])) {
                                     $course = $_GET['course'];
-                                    
+
                                     $sql = "SELECT * FROM studentsinfo_tbl WHERE course = $course";
                                 } else {
                                     $sql = "SELECT * FROM studentsinfo_tbl s ,coursesinfo_tbl c where s.course=c.cid";
@@ -66,23 +66,22 @@
                                 $result = $conn->query($sql);
 
                                 if ($result->num_rows > 0) {
-                                    $sno=0;
+                                    $sno = 0;
                                     while ($rows = $result->fetch_assoc()) {
 
-                                        if($rows['course']=="1")
-                                        {
+                                        if ($rows['course'] == "1") {
                                             $stud_course = "BCA";
-                                        }else{
+                                        } else {
                                             $stud_course = "MSCIT";
                                         }
 
                                         echo '<tr>
-                                        <td>'.++$sno.'</td>
+                                        <td>' . ++$sno . '</td>
                     <td>' . $rows['studentId'] . ' </td>
                     <td>' . $rows['firstname'] . ' ' . $rows['middlename'] . ' ' . $rows['lastname'] . '</td>
                     <td>' . $rows['gender'] . '</td>
                     <td>' . $rows['emailId'] . '</td>
-                    <td>' .$stud_course. '</td>
+                    <td>' . $stud_course . '</td>
                     <td> <a href="edit.php?id=' . $rows['studentId'] . '" class="btn btn-success btn-sm">Edit</a> <button  id="' . $rows['studentId'] . '" class="delete btn btn-danger btn-sm">Delete</button></td>
 
                     </tr>';
@@ -103,16 +102,22 @@
 
 
 
-    <?php include '../partial/_footer.php'; ?>
+    <?php include '../partial/_footer.php'; 
+        include 'script.php';
+    ?>
 
-
-    <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/dataTables.buttons.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/pdfmake.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/vfs_fonts.js"></script>
+    <script src="jq/assets/plugins/datatables/export/buttons.html5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'pdf'
+                ]
+            });
         });
 
         deletes = document.getElementsByClassName('delete');

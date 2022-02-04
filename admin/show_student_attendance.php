@@ -6,12 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
+    <?php include 'link.php';?>
+    <link href="jq/assets/plugins/datatables/export/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Styles -->
+    <link href="jq/assets/css/plugins.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -97,16 +95,22 @@
 
 
 
-    <?php include'../partial/_footer.php'; ?>
+    <?php include '../partial/_footer.php'; 
+            include 'script.php';
+    ?>
 
-
-    <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="jq/assets/plugins/datatables/export/dataTables.buttons.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/pdfmake.min.js"></script>
+    <script src="jq/assets/plugins/datatables/export/vfs_fonts.js"></script>
+    <script src="jq/assets/plugins/datatables/export/buttons.html5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'pdf'
+                ]
+            });
         });
 
         deletes = document.getElementsByClassName('delete');

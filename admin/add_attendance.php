@@ -28,12 +28,8 @@ if (isset($_POST['addAttendance']) && $_SERVER['REQUEST_METHOD'] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
+    <?php include 'link.php';?>
 
     <style>
         .radio-toolbar {
@@ -197,13 +193,9 @@ if (isset($_POST['addAttendance']) && $_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-    <?php include '../partial/_footer.php'; ?>
-
-
-    <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="../bootstrap/js/popper.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <?php include '../partial/_footer.php';
+        include 'script.php';
+    ?>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
